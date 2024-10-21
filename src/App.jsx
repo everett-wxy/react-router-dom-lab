@@ -7,10 +7,12 @@ import MailboxDetails from "./components/MailboxDetails";
 import MailboxForm from "./components/MailboxForm";
 
 function App() {
-// const [mailboxes, setMailboxes] = useState([]);
+const [mailboxes, setMailboxes] = useState([]);
 
-// function addBox(){}
-
+function addMailBox(mailbox){
+  setMailboxes(prevState => [...prevState, mailbox]);
+  console.log(mailboxes);
+}
 
   return (
     <div className="container">
@@ -18,7 +20,7 @@ function App() {
       <Routes>
         <Route path='/' element={<main><h1>Post Office</h1></main>}></Route>
         <Route path='/mailboxes' element={<MailboxList />}></Route>
-        <Route path='/new-mailbox' element={<MailboxForm />}></Route>
+        <Route path='/new-mailbox' element={<MailboxForm  addMailBox ={addMailBox}/>}></Route>
         <Route path='/mailboxes/:mailboxId' element={<MailboxDetails/>}></Route>
       </Routes>
     </div>
