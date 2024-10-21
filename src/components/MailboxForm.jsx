@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const MailboxForm = ({addMailBox}) => {
 
     const [name, setName] = useState('');
     const [size, setSize] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit =(e) => {
         e.preventDefault();
@@ -11,6 +13,7 @@ const MailboxForm = ({addMailBox}) => {
             addMailBox({boxholder: name, boxSize: size});
             setName('');
             setSize('small');
+            navigate('/mailboxes')
         }
     }
 
